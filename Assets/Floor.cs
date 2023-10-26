@@ -5,7 +5,7 @@ using UnityEngine;
 public class Floor : MonoBehaviour
 {
     [SerializeField] float moveSpeed =2f;
-    //public bool IsGeneratingFloors =true;
+    public bool IsGeneratingFloors =true;
     
     // Start is called before the first frame update
     void Start()
@@ -17,7 +17,7 @@ public class Floor : MonoBehaviour
     void Update()
     {
         transform.Translate(0, moveSpeed*Time.deltaTime, 0);
-        if(transform.position.y > 6f)
+        if(IsGeneratingFloors && transform.position.y > 6f)
         {
             Destroy(gameObject);
             transform.parent.GetComponent<FloorManager>().SpawnFloor();
